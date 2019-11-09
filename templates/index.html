@@ -42,22 +42,25 @@
             <select id="player-selector" class="selectpicker ml-2" data-live-search="true">
             </select>
         </div>
-        <div class="col-5">
+        <div class="col-4">
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="useCourtSelction" name="useCourtSelction" class="custom-control-input">
-                <label class="custom-control-label" for="useCourtSelction">
+                <input type="radio" id="useCourtSelection" name="useCourtSelection" class="custom-control-input">
+                <label class="custom-control-label" for="useCourtSelection">
                     <h6>Click Court to Shoot</h6>
                 </label>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="useRandomButton" name="useCourtSelction" class="custom-control-input">
+                <input type="radio" id="useRandomButton" name="useCourtSelection" class="custom-control-input">
                 <label class="custom-control-label" for="useRandomButton">
-                    <h6>Use Random Shot Button</h6>
+                    <h6>Take a Random Shot</h6>
                 </label>
             </div>
         </div>
-        <div class="col-4">
-            <button type="button" class="btn btn-primary btn-lg">Take Random Shot</button>
+        <div class="col-3">
+            <button type="button" id="finishedShotButton" class="btn btn-primary btn-lg">Calculate Results</button>
+        </div>
+        <div class="col-1">
+            <h4>Game Results:</h4>
         </div>
     </div>
     <div class="container-fluid">
@@ -73,6 +76,8 @@
             </div>
             <div class="col-2">
                 <!-- result/win/loss column -->
+                <div class="alert alert-primary" role="alert">
+                  </div>
             </div>
         </div>
     </div>
