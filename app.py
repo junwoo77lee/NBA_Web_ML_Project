@@ -1,6 +1,6 @@
 import pandas as pd
 
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request, make_response
 from sqlalchemy import create_engine
 from flask_sqlalchemy import SQLAlchemy
 
@@ -31,6 +31,24 @@ def get_shotchart_for_player(player_id):
     json = eval(df[['LOC_X', 'LOC_Y', 'EVENT_TYPE']].to_json(
         orient='table', index=False))['data']
     return jsonify(json)
+
+
+# @app.route('/api', methods=['POST'])
+# def api():
+#     # Do something useful here...
+#     return request.values.get('input', '')
+
+
+@app.route("/shochart/user-input", methods=["POST"])
+def post_user_inputs():
+
+    req = request.get_json()
+
+    print(req)
+
+    res = make_response(jsonify({"message": "OK"}), 200)
+
+    return res
 
 
 if __name__ == "__main__":

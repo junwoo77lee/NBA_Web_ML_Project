@@ -61,6 +61,37 @@ playerDropDown.change(function() {
 });
 
 
+function submitUserInputtedShotcharts(shotArray) {
+
+    // let shotChart = {
+    //     LOC_X: name.value,
+    //     LOC_Y: message.value
+    // };
+
+    fetch(`${window.origin}/shotchart/user-input`, {
+            method: "POST",
+            credentials: "include",
+            body: JSON.stringify(shotArray),
+            cache: "no-cache",
+            headers: new Headers({
+                "content-type": "application/json"
+            })
+        })
+        .then(function(response) {
+            if (response.status !== 200) {
+                console.log(`Looks like there was a problem. Status code: ${response.status}`);
+                return;
+            }
+            response.json().then(function(data) {
+                console.log(data);
+            });
+        })
+        .catch(function(error) {
+            console.log("Fetch error: " + error);
+        });
+}
+
+
 function userInputListener() {
 
     var userShots = [];
@@ -94,6 +125,7 @@ function userInputListener() {
 
     d3.select('#button1').on('click', function() {
         console.log(userShots);
+        submitUserInputtedShotcharts(userShots);
     });
 }
 
