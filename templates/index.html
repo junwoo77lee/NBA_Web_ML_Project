@@ -35,13 +35,13 @@
     </div>
 
     <div class="row">
-        <!-- <div class="col-1">
-        </div> -->
+        <!-- creating player pick list -->
         <div class="col-3">
             <label class="ml-2">Select a Player:</label>
             <select id="player-selector" class="selectpicker ml-2" data-live-search="true">
             </select>
         </div>
+        <!-- creating toggle buttons to select interaction type -->
         <div class="col-4">
             <div class="custom-control custom-radio custom-control-inline">
                 <input type="radio" id="useCourtSelection" name="useCourtSelection" class="custom-control-input">
@@ -56,9 +56,11 @@
                 </label>
             </div>
         </div>
+        <!-- created button to select and calculate results -->
         <div class="col-3">
             <button type="button" id="finishedShotButton" class="btn btn-primary btn-lg">Calculate Results</button>
         </div>
+        <!-- header for the column below that displayes results -->
         <div class="col-1">
             <h4>Game Results:</h4>
         </div>
@@ -76,7 +78,7 @@
             </div>
             <div class="col-2">
                 <!-- result/win/loss column -->
-                <div class="alert alert-primary" role="alert">
+                <div" class="winLossColumn alert alert-primary" id="winLossDisplay" role="alert">
                   </div>
             </div>
         </div>

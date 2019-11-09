@@ -60,6 +60,10 @@ playerDropDown.change(function() {
     getPlayerImage(playerId);
 });
 
+// diplay completed game win/loss results to site
+
+// var playerWinLossResults = $('.winLossColumn')
+
 
 function userInputListener() {
 
