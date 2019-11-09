@@ -1,0 +1,49 @@
+.shot-chart {
+    display: block;
+    position: relative;
+}
+
+.shot-chart .shot-chart-avg svg {
+    background: 0 0;
+    position: relative;
+    z-index: 2
+}
+
+.shot-chart svg {
+    background: #fff;
+}
+
+.shot-chart .userClickableArea {
+    fill: rgba(255, 255, 255, 0.1);
+}
+
+.shot-chart .userShot {
+    fill: red;
+}
+
+.shot-chart .hoop {
+    pointer-events: none;
+}
+
+.shot-chart .hoop .rim {
+    stroke: rgb(245, 8, 4);
+    fill: none;
+    stroke-linecap: square;
+    stroke-linejoin: bevel;
+    stroke-miterlimit: 10;
+    stroke-width: 3.0;
+}
+
+.shot-chart .court line,
+.shot-chart .court path,
+.shot-chart .court polyline,
+.shot-chart .court rect,
+.shot-chart .hoop .backboard {
+    position: absolute;
+    stroke: navy;
+    fill: none;
+    stroke-linecap: square;
+    stroke-linejoin: bevel;
+    stroke-miterlimit: 10;
+    stroke-width: 3.0;
+}
