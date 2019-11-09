@@ -1,4 +1,4 @@
-// List-up the top20 players namd to the dropdown menu
+// List-up the top20 players named to the dropdown menu
 d3.json('static/db/players.json').then(dropDownMenuOrganizer);
 
 var shotChart = d3.select('.shot-chart');
