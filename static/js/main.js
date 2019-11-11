@@ -53,25 +53,26 @@ var playerDropDown = $('.selectpicker')
 playerDropDown.change(function() {
     let playerId = playerDropDown.val();
 
-    d3.json(`/shotchart/${playerId}`).then((response) => {
-        const randonmizedShots = knuthShuffle(response, 10000);
-        drawShots(randonmizedShots, courtWidth, halfCourtHeight, xScaler, yScaler);
-    });
+    // For drawing player's actual shot charts
+    // d3.json(`/shotchart/${playerId}`).then((response) => {
+    //     const randonmizedShots = knuthShuffle(response, 50000);
+    //     drawShots(randonmizedShots, courtWidth, halfCourtHeight, xScaler, yScaler);
+    // });
     getPlayerImage(playerId);
 });
 
 
 function submitUserInputtedShotcharts(shotArray) {
 
-    // let shotChart = {
-    //     LOC_X: name.value,
-    //     LOC_Y: message.value
-    // };
+    let playerName = $("#player-selector option:selected").text();
 
-    fetch(`${window.origin}/shotchart/user-input`, {
+    fetch(`${window.origin}/user-input`, {
             method: "POST",
             credentials: "include",
-            body: JSON.stringify(shotArray),
+            body: JSON.stringify({
+                'playerName': playerName,
+                'data': shotArray
+            }),
             cache: "no-cache",
             headers: new Headers({
                 "content-type": "application/json"
@@ -83,7 +84,7 @@ function submitUserInputtedShotcharts(shotArray) {
                 return;
             }
             response.json().then(function(data) {
-                console.log(data);
+                console.log(data); // Resp [200] with Message: "OK"
             });
         })
         .catch(function(error) {
@@ -111,7 +112,7 @@ function userInputListener() {
             Math.floor(yScaler.invert(y))
         ]
 
-        userShots.push({ x: shotX, y: shotY })
+        userShots.push({ LOC_X: shotX, LOC_Y: shotY, SHOT_ATTEMPTED_FLAG: 1 })
 
         console.log(`X=${x}, Y=${y}`);
         console.log(`Shot X=${shotX}, Shot Y=${shotY}`);
@@ -123,7 +124,7 @@ function userInputListener() {
             .attr('r', '5');
     }
 
-    d3.select('#button1').on('click', function() {
+    d3.select('#finishedShotButton').on('click', function() {
         console.log(userShots);
         submitUserInputtedShotcharts(userShots);
     });
@@ -132,7 +133,6 @@ function userInputListener() {
 function getPlayerImage(playerId) {
 
     const image = d3.select("#player-image")
-    console.log(image);
     image.attr('src', `http://stats.nba.com/media/players/230x185/${playerId}.png`)
         .attr('alt', playerId);
 }
