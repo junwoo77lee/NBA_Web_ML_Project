@@ -3,7 +3,7 @@ d3.json('static/db/players.json').then(dropDownMenuOrganizer);
 
 var shotChart = d3.select('.shot-chart');
 
-svgWidth = 900;
+svgWidth = 700;
 svgHeight = 700;
 
 var margin = {
@@ -16,7 +16,7 @@ var margin = {
 const svg = shotChart.append('svg')
     .attr('preserveAspectRatio', 'xMinYMin meet')
     .attr('xmlns', 'http://www.w3.org/2000/svg')
-    .attr('viewBox', `-50 0 ${svgWidth} ${svgHeight}`);
+    .attr('viewBox', `-100 0 ${svgWidth} ${svgHeight}`);
 
 
 // Get the dimensions for shot zone
@@ -26,6 +26,8 @@ var halfCourtHeight = 470;
 const groups = {
     court: svg.append('g').attr('class', 'court'),
     hoop: svg.append('g').attr('class', 'hoop'),
+    userClickableArea: svg.append('g')
+        .attr('class', 'userClickableArea'),
     shotGroup: svg.append('g')
         .attr('class', 'shots')
         .attr('width', courtWidth) // courtWidth is a global variable
@@ -46,20 +48,30 @@ var yScaler = d3.scaleLinear()
 // Draw a court
 drawCourt();
 // Listen for user-inputted shotchart 
-userInputListener();
+userInputListener(groups.userClickableArea);
 
 // Draw shots when selecting a player on the dropdown menu
 var playerDropDown = $('.selectpicker')
 playerDropDown.change(function() {
+    // Clean-up existing data
+    d3.select('#predictions').html('');
+    const NumberOfShots = parseInt(d3.select('#random-shots').node().value);
+
     let playerId = playerDropDown.val();
+    const where = "LIKE"; //* "LIKE": to get 2019-20 dataset, "NOT LIKE": to get ≤ 2018-19 dataset
 
     // For drawing player's actual shot charts
-    // d3.json(`/shotchart/${playerId}`).then((response) => {
-    //     const randonmizedShots = knuthShuffle(response, 50000);
-    //     drawShots(randonmizedShots, courtWidth, halfCourtHeight, xScaler, yScaler);
-    // });
+    d3.json(`/shotchart?playerId=${playerId}&where=${where}`).then((response) => {
+        // console.log(response);
+        const randonmizedShots = knuthShuffle(response, NumberOfShots);
+        drawShots(randonmizedShots, courtWidth, halfCourtHeight, xScaler, yScaler);
+        submitUserInputtedShotcharts(randonmizedShots);
+    });
     getPlayerImage(playerId);
 });
+
+// randomized shots: [{'EVENT_TYPE': "Missed Shot", "LOC_X": -71, "LOC_Y": 96}] to
+// desired format: [{'LOC_X': -190, 'LOC_Y': -18, 'SHOT_ATTEMPTED_FLAG': 1}]
 
 
 function submitUserInputtedShotcharts(shotArray) {
@@ -84,7 +96,58 @@ function submitUserInputtedShotcharts(shotArray) {
                 return;
             }
             response.json().then(function(data) {
-                console.log(data); // Resp [200] with Message: "OK"
+                console.log(data);
+                const predict = d3.select("#predictions");
+                predict.selectAll('div')
+                    .data(data)
+                    .enter()
+                    .append('table')
+                    .attr('class', 'table table-striped table-sm mr-3')
+                    .html(d => {
+                        return `<caption>Step1 predicts: shot-locations -> shot-made%<br>
+                                         Step2 predicts: shot-made% -> player's score<br>
+                                         Step3 predicts: player's score -> team's score<br>
+                                         Step4 predicts: team's score -> win or lose<br>
+                                </caption>                                    
+                                <thead class="text-center">
+                                    <tr>
+                                        <th></th>
+                                        <th scope="col">This Season</th>
+                                        <th scope="col">Predicted</th>
+                                        <th scope="col">Remark<th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-center">
+                                    <tr>
+                                        <th scope="row">Step1</td>
+                                        <td>${Math.round(d.FG_PCT_2019 * 100) / 100} /
+                                        ${Math.round(d.FG3_PCT_2019 * 100) / 100}
+                                        </td>
+                                        <td>${Math.round(d.FG_PCT * 100) / 100} /
+                                        ${Math.round(d.FG3_PCT * 100) / 100}
+                                        </td>
+                                        <td>FG% / FG3%</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Step2</td>
+                                        <td>${Math.floor(d.PTS_player_AVG_2019)}</td>
+                                        <td>${Math.floor(d.PTS_player)}</td>
+                                        <td>PTS(player)</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Step3</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>PTS(team)</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Step4</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>`
+                    });
             });
         })
         .catch(function(error) {
@@ -93,11 +156,9 @@ function submitUserInputtedShotcharts(shotArray) {
 }
 
 
-function userInputListener() {
+function userInputListener(userClickableArea) {
 
     var userShots = [];
-    const userClickableArea = svg.append('g')
-        .attr('class', 'userClickableArea')
 
     userClickableArea.append('rect')
         .attr('x', '0')
@@ -157,10 +218,10 @@ function drawShots(shots) {
         .data(shots)
         .enter()
         .append('circle')
-        .attr('fill', d => {
-            if (d.EVENT_TYPE === "Made Shot") return 'green'
-            else return 'red'
-        })
+        // .attr('fill', d => {
+        //     if (d.EVENT_TYPE === "Made Shot") return 'green'
+        //     else return 'red'
+        // })
         .attr('cx', d => xScaler(d.LOC_X))
         .attr('cy', d => yScaler(d.LOC_Y))
         .attr('r', '5');
