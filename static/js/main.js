@@ -70,9 +70,9 @@ playerDropDown.change(function() {
     getPlayerImage(playerId);
 });
 
-// randomized shots: [{'EVENT_TYPE': "Missed Shot", "LOC_X": -71, "LOC_Y": 96}] to
-// desired format: [{'LOC_X': -190, 'LOC_Y': -18, 'SHOT_ATTEMPTED_FLAG': 1}]
+// diplay completed game win/loss results to site
 
+// var playerWinLossResults = $('.winLossColumn')
 
 function submitUserInputtedShotcharts(shotArray) {
 
