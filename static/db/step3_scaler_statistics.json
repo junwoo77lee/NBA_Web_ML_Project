@@ -1,0 +1,122 @@
+{
+    "Al Horford": {
+        "mean_PLAYER_PTS": 1.565232461e-16,
+        "mean_PLUS_MINUS": 6.552135883e-17,
+        "std_PLAYER_PTS": 1.0,
+        "std_PLUS_MINUS": 1.0
+    },
+    "Anthony Davis": {
+        "mean_PLAYER_PTS": 5.2010448e-17,
+        "mean_PLUS_MINUS": 8.001607385e-18,
+        "std_PLAYER_PTS": 1.0,
+        "std_PLUS_MINUS": 1.0
+    },
+    "Chris Paul": {
+        "mean_PLAYER_PTS": -1.644231124e-16,
+        "mean_PLUS_MINUS": -2.789320657e-17,
+        "std_PLAYER_PTS": 1.0,
+        "std_PLUS_MINUS": 1.0
+    },
+    "Damian Lillard": {
+        "mean_PLAYER_PTS": -1.90494031e-16,
+        "mean_PLUS_MINUS": -4.762350776e-17,
+        "std_PLAYER_PTS": 1.0,
+        "std_PLUS_MINUS": 1.0
+    },
+    "Draymond Green": {
+        "mean_PLAYER_PTS": -1.372639376e-16,
+        "mean_PLUS_MINUS": 5.382899513e-17,
+        "std_PLAYER_PTS": 1.0,
+        "std_PLUS_MINUS": 1.0
+    },
+    "Giannis Antetokounmpo": {
+        "mean_PLAYER_PTS": -8.406627018e-17,
+        "mean_PLUS_MINUS": -1.46202209e-17,
+        "std_PLAYER_PTS": 1.0,
+        "std_PLUS_MINUS": 1.0
+    },
+    "James Harden": {
+        "mean_PLAYER_PTS": -1.380588217e-17,
+        "mean_PLUS_MINUS": 2.761176434e-17,
+        "std_PLAYER_PTS": 1.0,
+        "std_PLUS_MINUS": 1.0
+    },
+    "Jimmy Butler": {
+        "mean_PLAYER_PTS": 1.240098171e-16,
+        "mean_PLUS_MINUS": -4.021940014e-17,
+        "std_PLAYER_PTS": 1.0,
+        "std_PLUS_MINUS": 1.0
+    },
+    "Joel Embiid": {
+        "mean_PLAYER_PTS": -1.42506239e-16,
+        "mean_PLUS_MINUS": -4.971147871e-17,
+        "std_PLAYER_PTS": 1.0,
+        "std_PLUS_MINUS": 1.0
+    },
+    "Karl-Anthony Towns": {
+        "mean_PLAYER_PTS": -1.480297366e-16,
+        "mean_PLUS_MINUS": 1.850371708e-17,
+        "std_PLAYER_PTS": 1.0,
+        "std_PLUS_MINUS": 1.0
+    },
+    "Kawhi Leonard": {
+        "mean_PLAYER_PTS": -1.563694401e-16,
+        "mean_PLUS_MINUS": -4.691083203e-17,
+        "std_PLAYER_PTS": 1.0,
+        "std_PLUS_MINUS": 1.0
+    },
+    "Kevin Durant": {
+        "mean_PLAYER_PTS": 3.520219346e-17,
+        "mean_PLUS_MINUS": -1.353930518e-17,
+        "std_PLAYER_PTS": 1.0,
+        "std_PLUS_MINUS": 1.0
+    },
+    "Kyrie Irving": {
+        "mean_PLAYER_PTS": 4.866731067e-17,
+        "mean_PLUS_MINUS": 1.581687597e-17,
+        "std_PLAYER_PTS": 1.0,
+        "std_PLUS_MINUS": 1.0
+    },
+    "Lebron James": {
+        "mean_PLAYER_PTS": -1.840495312e-16,
+        "mean_PLUS_MINUS": -8.365887784e-18,
+        "std_PLAYER_PTS": 1.0,
+        "std_PLUS_MINUS": 1.0
+    },
+    "Nikola Jokic": {
+        "mean_PLAYER_PTS": 1.413011122e-16,
+        "mean_PLUS_MINUS": -3.229739708e-17,
+        "std_PLAYER_PTS": 1.0,
+        "std_PLUS_MINUS": 1.0
+    },
+    "Paul George": {
+        "mean_PLAYER_PTS": 7.361261359e-17,
+        "mean_PLUS_MINUS": -1.448116989e-17,
+        "std_PLAYER_PTS": 1.0,
+        "std_PLUS_MINUS": 1.0
+    },
+    "Rudy Gobert": {
+        "mean_PLAYER_PTS": -8.881784197e-17,
+        "mean_PLUS_MINUS": -2.049642507e-17,
+        "std_PLAYER_PTS": 1.0,
+        "std_PLUS_MINUS": 1.0
+    },
+    "Russell Westbrook": {
+        "mean_PLAYER_PTS": 6.739565244e-17,
+        "mean_PLUS_MINUS": -2.406987587e-17,
+        "std_PLAYER_PTS": 1.0,
+        "std_PLUS_MINUS": 1.0
+    },
+    "Stephen Curry": {
+        "mean_PLAYER_PTS": -7.665825646e-17,
+        "mean_PLUS_MINUS": -2.995839908e-17,
+        "std_PLAYER_PTS": 1.0,
+        "std_PLUS_MINUS": 1.0
+    },
+    "Victor Oladipo": {
+        "mean_PLAYER_PTS": 1.35734908e-16,
+        "mean_PLUS_MINUS": 1.180303548e-17,
+        "std_PLAYER_PTS": 1.0,
+        "std_PLUS_MINUS": 1.0
+    }
+}
