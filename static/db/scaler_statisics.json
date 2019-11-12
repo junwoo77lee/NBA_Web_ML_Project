@@ -1,0 +1,122 @@
+{
+    "Al Horford": {
+        "mean_x": 1.580081136e-17,
+        "mean_y": 4.542733265e-17,
+        "std_x": 1.0,
+        "std_y": 1.0
+    },
+    "Anthony Davis": {
+        "mean_x": 2.560612527e-17,
+        "mean_y": -9.697638933e-17,
+        "std_x": 1.0,
+        "std_y": 1.0
+    },
+    "Chris Paul": {
+        "mean_x": -1.750436908e-17,
+        "mean_y": 3.029602341e-17,
+        "std_x": 1.0,
+        "std_y": 1.0
+    },
+    "Damian Lillard": {
+        "mean_x": 1.60112284e-17,
+        "mean_y": -3.202245679e-17,
+        "std_x": 1.0,
+        "std_y": 1.0
+    },
+    "Draymond Green": {
+        "mean_x": -3.303825492e-17,
+        "mean_y": -9.911476475e-18,
+        "std_x": 1.0,
+        "std_y": 1.0
+    },
+    "Giannis Antetokounmpo": {
+        "mean_x": 5.696875011e-18,
+        "mean_y": 6.6226172e-17,
+        "std_x": 1.0,
+        "std_y": 1.0
+    },
+    "James Harden": {
+        "mean_x": -2.966185757e-17,
+        "mean_y": 2.542444935e-17,
+        "std_x": 1.0,
+        "std_y": 1.0
+    },
+    "Jimmy Butler": {
+        "mean_x": 1.960794028e-17,
+        "mean_y": 2.450992535e-17,
+        "std_x": 1.0,
+        "std_y": 1.0
+    },
+    "Joel Embiid": {
+        "mean_x": -1.179357792e-17,
+        "mean_y": 4.554761127e-17,
+        "std_x": 1.0,
+        "std_y": 1.0
+    },
+    "Karl_Anthony Towns": {
+        "mean_x": 1.199083691e-17,
+        "mean_y": 2.055572042e-17,
+        "std_x": 1.0,
+        "std_y": 1.0
+    },
+    "Kawhi Leonard": {
+        "mean_x": -2.591120187e-17,
+        "mean_y": -6.045947103e-17,
+        "std_x": 1.0,
+        "std_y": 1.0
+    },
+    "Kevin Durant": {
+        "mean_x": -5.152512942e-17,
+        "mean_y": 2.072206292e-17,
+        "std_x": 1.0,
+        "std_y": 1.0
+    },
+    "Kyrie Irving": {
+        "mean_x": -1.566581752e-17,
+        "mean_y": -4.479444696e-17,
+        "std_x": 1.0,
+        "std_y": 1.0
+    },
+    "Nikola Jokic": {
+        "mean_x": -4.74327594e-18,
+        "mean_y": 5.810513026e-17,
+        "std_x": 1.0,
+        "std_y": 1.0
+    },
+    "Paul George": {
+        "mean_x": 2.466503489e-17,
+        "mean_y": 8.253300135e-17,
+        "std_x": 1.0,
+        "std_y": 1.0
+    },
+    "Rudy Gobert": {
+        "mean_x": -2.487894733e-17,
+        "mean_y": -3.234263153e-17,
+        "std_x": 1.0,
+        "std_y": 1.0
+    },
+    "Russell Westbrook": {
+        "mean_x": 1.157047282e-18,
+        "mean_y": 7.173693147e-17,
+        "std_x": 1.0,
+        "std_y": 1.0
+    },
+    "Stephen Curry": {
+        "mean_x": -2.274273632e-17,
+        "mean_y": 3.72831743e-18,
+        "std_x": 1.0,
+        "std_y": 1.0
+    },
+    "Victor Oladipo": {
+        "mean_x": -1.517281093e-18,
+        "mean_y": 1.062096765e-17,
+        "std_x": 1.0,
+        "std_y": 1.0
+    },
+    "Lebron James": {
+        "mean_x": -1.167107763e-17,
+        "mean_y": -6.249673827e-17,
+        "std_x": 1.0,
+        "std_y": 1.0
+    }
+}
