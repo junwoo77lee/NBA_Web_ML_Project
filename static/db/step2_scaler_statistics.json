@@ -1,0 +1,162 @@
+{
+    "Al Horford": {
+        "mean_FG3_PCT": 0.1607667087,
+        "mean_FG_PCT": 0.5275964691,
+        "mean_PLAYING%": 0.5468684321,
+        "std_FG3_PCT": 0.2904470862,
+        "std_FG_PCT": 0.1580810784,
+        "std_PLAYING%": 0.099696164
+    },
+    "Anthony Davis": {
+        "mean_FG3_PCT": 0.1463044397,
+        "mean_FG_PCT": 0.5139556025,
+        "mean_PLAYING%": 0.5761804087,
+        "std_FG3_PCT": 0.2781118852,
+        "std_FG_PCT": 0.1355296427,
+        "std_PLAYING%": 0.1297403367
+    },
+    "Chris Paul": {
+        "mean_FG3_PCT": 0.3355480167,
+        "mean_FG_PCT": 0.4615083507,
+        "mean_PLAYING%": 0.5837856646,
+        "std_FG3_PCT": 0.2953741005,
+        "std_FG_PCT": 0.14319214,
+        "std_PLAYING%": 0.0897273473
+    },
+    "Damian Lillard": {
+        "mean_FG3_PCT": 0.3559676259,
+        "mean_FG_PCT": 0.4323633094,
+        "mean_PLAYING%": 0.6044964029,
+        "std_FG3_PCT": 0.1878007446,
+        "std_FG_PCT": 0.1151954439,
+        "std_PLAYING%": 0.0676708618
+    },
+    "Draymond Green": {
+        "mean_FG3_PCT": 0.2578364312,
+        "mean_FG_PCT": 0.4088048327,
+        "mean_PLAYING%": 0.4683705081,
+        "std_FG3_PCT": 0.2974756476,
+        "std_FG_PCT": 0.2180007624,
+        "std_PLAYING%": 0.1562733572
+    },
+    "Giannis Antetokounmpo": {
+        "mean_FG3_PCT": 0.1887272727,
+        "mean_FG_PCT": 0.5030930233,
+        "mean_PLAYING%": 0.5458069063,
+        "std_FG3_PCT": 0.2958086297,
+        "std_FG_PCT": 0.1612342352,
+        "std_PLAYING%": 0.1200063296
+    },
+    "James Harden": {
+        "mean_FG3_PCT": 0.3634631307,
+        "mean_FG_PCT": 0.4406093144,
+        "mean_PLAYING%": 0.5688443295,
+        "std_FG3_PCT": 0.2169999469,
+        "std_FG_PCT": 0.1404643576,
+        "std_PLAYING%": 0.1156441177
+    },
+    "Jimmy Butler": {
+        "mean_FG3_PCT": 0.2766854103,
+        "mean_FG_PCT": 0.4449285714,
+        "mean_PLAYING%": 0.5504812563,
+        "std_FG3_PCT": 0.318949641,
+        "std_FG_PCT": 0.1930986989,
+        "std_PLAYING%": 0.1702214157
+    },
+    "Joel Embiid": {
+        "mean_FG3_PCT": 0.2940925926,
+        "mean_FG_PCT": 0.4824197531,
+        "mean_PLAYING%": 0.5112139918,
+        "std_FG3_PCT": 0.2818529815,
+        "std_FG_PCT": 0.1077020117,
+        "std_PLAYING%": 0.0926533617
+    },
+    "Karl-Anthony Towns": {
+        "mean_FG3_PCT": 0.3480762195,
+        "mean_FG_PCT": 0.5384969512,
+        "mean_PLAYING%": 0.5731199187,
+        "std_FG3_PCT": 0.3198218402,
+        "std_FG_PCT": 0.136094521,
+        "std_PLAYING%": 0.0905856761
+    },
+    "Kawhi Leonard": {
+        "mean_FG3_PCT": 0.3523382664,
+        "mean_FG_PCT": 0.4940972516,
+        "mean_PLAYING%": 0.5143058492,
+        "std_FG3_PCT": 0.2970955372,
+        "std_FG_PCT": 0.1552037584,
+        "std_PLAYING%": 0.111374918
+    },
+    "Kevin Durant": {
+        "mean_FG3_PCT": 0.3784405183,
+        "mean_FG_PCT": 0.4992720848,
+        "mean_PLAYING%": 0.6147232038,
+        "std_FG3_PCT": 0.2609782333,
+        "std_FG_PCT": 0.1243226561,
+        "std_PLAYING%": 0.0964507997
+    },
+    "Kyrie Irving": {
+        "mean_FG3_PCT": 0.3760757282,
+        "mean_FG_PCT": 0.4623883495,
+        "mean_PLAYING%": 0.5635598706,
+        "std_FG3_PCT": 0.2433912322,
+        "std_FG_PCT": 0.1325349255,
+        "std_PLAYING%": 0.0983216948
+    },
+    "Lebron James": {
+        "mean_FG3_PCT": 0.2992838174,
+        "mean_FG_PCT": 0.5057136929,
+        "mean_PLAYING%": 0.6429737206,
+        "std_FG3_PCT": 0.2524018196,
+        "std_FG_PCT": 0.113075983,
+        "std_PLAYING%": 0.0858074569
+    },
+    "Nikola Jokic": {
+        "mean_FG3_PCT": 0.2904126984,
+        "mean_FG_PCT": 0.5183809524,
+        "mean_PLAYING%": 0.472010582,
+        "std_FG3_PCT": 0.3287555301,
+        "std_FG_PCT": 0.1827094408,
+        "std_PLAYING%": 0.1269316979
+    },
+    "Paul George": {
+        "mean_FG3_PCT": 0.3540645695,
+        "mean_FG_PCT": 0.4284387417,
+        "mean_PLAYING%": 0.5637693157,
+        "std_FG3_PCT": 0.2329683018,
+        "std_FG_PCT": 0.1453226109,
+        "std_PLAYING%": 0.1230312937
+    },
+    "Rudy Gobert": {
+        "mean_FG3_PCT": 0.0,
+        "mean_FG_PCT": 0.6027729469,
+        "mean_PLAYING%": 0.4801127214,
+        "std_FG3_PCT": 0.0,
+        "std_FG_PCT": 0.258948454,
+        "std_PLAYING%": 0.1605171832
+    },
+    "Russell Westbrook": {
+        "mean_FG3_PCT": 0.2492487923,
+        "mean_FG_PCT": 0.4321135266,
+        "mean_PLAYING%": 0.5752616747,
+        "std_FG3_PCT": 0.2650712682,
+        "std_FG_PCT": 0.1253154247,
+        "std_PLAYING%": 0.0888307538
+    },
+    "Stephen Curry": {
+        "mean_FG3_PCT": 0.4206031519,
+        "mean_FG_PCT": 0.4695071633,
+        "mean_PLAYING%": 0.5723018147,
+        "std_FG3_PCT": 0.1958276153,
+        "std_FG_PCT": 0.1304430837,
+        "std_PLAYING%": 0.1063543939
+    },
+    "Victor Oladipo": {
+        "mean_FG3_PCT": 0.3469303483,
+        "mean_FG_PCT": 0.4414427861,
+        "mean_PLAYING%": 0.5543117745,
+        "std_FG3_PCT": 0.2686165538,
+        "std_FG_PCT": 0.1424907328,
+        "std_PLAYING%": 0.1120388845
+    }
+}

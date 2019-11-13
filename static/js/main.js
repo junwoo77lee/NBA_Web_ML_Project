@@ -2,6 +2,30 @@
 d3.json('static/db/players.json').then(dropDownMenuOrganizer);
 
 var shotChart = d3.select('.shot-chart');
+var shotType = d3.select('input[name="shots-on-court"]:checked').node().id;
+// console.log(shotType);
+// var radioUserShots = d3.select('input[name="shots-on-court"]:checked') //document.getElementById('use-user-shots');
+// console.log(radioUserShots.checked);
+
+
+const radioShotsOnCourt = d3.selectAll("input[name='shots-on-court']");
+// const radioShotsOnCourt = d3.select('input[name="shots-on-court"]:checked');
+radioShotsOnCourt.on("change", function() {
+    shotType = this.id; // user-shots or random-shots
+    console.log(shotType);
+    // Clean-up existing data: 
+    // prediction summary table, random-shot-chart, and user-shot-chart, if they exist
+    d3.select('#predictions').html('');
+    groups.shotGroup.selectAll('circle').remove();
+    groups.userClickableArea.selectAll('circle').remove();
+
+    // especially for the case that it needs to be done with random shots once the radio button clicked
+    // while showing the same player.
+    if (shotType === 'random-shots') {
+        get_random_shots();
+    }
+});
+
 
 svgWidth = 700;
 svgHeight = 700;
@@ -45,31 +69,119 @@ var yScaler = d3.scaleLinear()
     .range([margin.top, halfCourtHeight]);
 
 
+
 // Draw a court
 drawCourt();
 // Listen for user-inputted shotchart 
 userInputListener(groups.userClickableArea);
 
 // Draw shots when selecting a player on the dropdown menu
+
+// var playerId = playerDropDown.val();
 var playerDropDown = $('.selectpicker')
 playerDropDown.change(function() {
-    // Clean-up existing data
+    // Clean-up existing data: 
+    // prediction summary table, random-shot-chart, and user-shot-chart, if they exist
     d3.select('#predictions').html('');
-    const NumberOfShots = parseInt(d3.select('#random-shots').node().value);
+    groups.shotGroup.selectAll('circle').remove();
+    groups.userClickableArea.selectAll('circle').remove();
+
+    // const NumberOfRandomShots = parseInt(d3.select('#shot-counts').node().value);
 
     let playerId = playerDropDown.val();
     const where = "LIKE"; //* "LIKE": to get 2019-20 dataset, "NOT LIKE": to get ≤ 2018-19 dataset
 
+    // update player's stats on the browser
+    player_stats_table(playerId);
+
+    // If the radio button for randomized shots is checked,
+    // then the shots randomly chosen from 2019-20 actual shot-chart dataset
+    // will be displayed with the amount defined by user (default: 100 ea).
     // For drawing player's actual shot charts
-    d3.json(`/shotchart?playerId=${playerId}&where=${where}`).then((response) => {
-        // console.log(response);
-        const randonmizedShots = knuthShuffle(response, NumberOfShots);
-        drawShots(randonmizedShots, courtWidth, halfCourtHeight, xScaler, yScaler);
-        submitUserInputtedShotcharts(randonmizedShots);
-    });
+    if (shotType === 'random-shots') {
+        get_random_shots();
+        // d3.json(`/shotchart?playerId=${playerId}&where=${where}`).then((response) => {
+        //     // console.log(response);
+        //     const randonmizedShots = knuthShuffle(response, NumberOfRandomShots);
+        //     drawShots(randonmizedShots, courtWidth, halfCourtHeight, xScaler, yScaler);
+
+        //     // When user click the button "Calculate Results"
+        //     d3.select('#finishedShotButton').on('click', function() {
+        //         console.log(randonmizedShots);
+        //         submitUserInputtedShotcharts(randonmizedShots);
+        //     });
+        // });
+    } else {
+        // Make the array for storing the user-inputs empty whenever trying another player
+        userInputListener(groups.userClickableArea);
+    }
+
     getPlayerImage(playerId);
 });
 
+
+function get_random_shots() {
+
+    let playerId = playerDropDown.val();
+    const where = "LIKE"; //* "LIKE": to get 2019-20 dataset, "NOT LIKE": to get ≤ 2018-19 dataset
+
+    const NumberOfRandomShots = parseInt(d3.select('#shot-counts').node().value);
+
+    d3.json(`/shotchart?playerId=${playerId}&where=${where}`).then((response) => {
+        // console.log(response);
+        const randonmizedShots = knuthShuffle(response, NumberOfRandomShots);
+        drawShots(randonmizedShots, courtWidth, halfCourtHeight, xScaler, yScaler);
+
+        // When user click the button "Calculate Results"
+        d3.select('#finishedShotButton').on('click', function() {
+            console.log(randonmizedShots);
+            submitUserInputtedShotcharts(randonmizedShots);
+        });
+    });
+}
+
+
+function player_stats_table(personid) {
+    // target the html area
+    var playerStatAccess = d3.select('#playerStatTable');
+
+    // clean-up the existing stats
+    playerStatAccess.html('')
+
+    // read the csv
+    d3.csv("static/db/2018_Player_stats.csv").then(function(response) {
+        // peer into the data via console
+        console.log('data from csv player stats:', response);
+
+        // create variables
+        let player_record;
+
+        // for loop
+        for (let i = 0; i < response.length; i++) {
+            let record = response[i]; // each dictionary
+            // find the player where the person ID matches
+            if (parseInt(record["PERSON_ID"]) == personid) {
+                player_record = record;
+            }
+        }
+
+        // build the html text table (using d3)
+        for (const [key, value] of Object.entries(player_record)) {
+            // we have each key, value in the player record
+            console.log(key, value);
+
+            // create a data "row" for each set
+            // <li class="list-group-item"><span>Name: </span>sample data info</li>
+            if (!(key == "" || key == "DISPLAY_FIRST_LAST" || key == "PERSON_ID")) {
+                playerStatAccess.append('text')
+                    .attr('class', 'stats')
+                    .html(`<li class="list-group-item ml-4 mb-n3"><span>${key}: </span>${value}</li>`);
+            }
+
+        }
+
+    })
+}
 // diplay completed game win/loss results to site
 
 // var playerWinLossResults = $('.winLossColumn')
@@ -126,25 +238,25 @@ function submitUserInputtedShotcharts(shotArray) {
                                         <td>${Math.round(d.FG_PCT * 100) / 100} /
                                         ${Math.round(d.FG3_PCT * 100) / 100}
                                         </td>
-                                        <td>FG% / FG3%</td>
+                                        <td>2pts. / 3pts. field goal%</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Step2</td>
-                                        <td>${Math.floor(d.PTS_player_AVG_2019)}</td>
-                                        <td>${Math.floor(d.PTS_player)}</td>
-                                        <td>PTS(player)</td>
+                                        <td>${Math.round(d.PTS_player_AVG_2019 * 10) / 10}</td>
+                                        <td>${Math.round(d.PTS_player * 10) / 10}</td>
+                                        <td>avg score (player)</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Step3</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>PTS(team)</td>
+                                        <td>${Math.round(d.PTS_team_AVG_2019 * 10) / 10}</td>
+                                        <td>${Math.round(d.PTS_team * 10) / 10}</td>
+                                        <td>avg score (team)</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Step4</td>
                                         <td></td>
                                         <td></td>
-                                        <td></td>
+                                        <td style="fontsize: 30px;"><strong>${d.WIN_LOSE}</strong></td>
                                     </tr>
                                 </tbody>`
                     });
@@ -155,10 +267,12 @@ function submitUserInputtedShotcharts(shotArray) {
         });
 }
 
-
+// Listen to user-inputs and display them on the court.
+// Fianlly, throw them to back-end when fetching
 function userInputListener(userClickableArea) {
 
     var userShots = [];
+    // var playerId = playerDropDown.val();
 
     userClickableArea.append('rect')
         .attr('x', '0')
@@ -185,6 +299,7 @@ function userInputListener(userClickableArea) {
             .attr('r', '5');
     }
 
+    // When user click the button "Calculate Results"
     d3.select('#finishedShotButton').on('click', function() {
         console.log(userShots);
         submitUserInputtedShotcharts(userShots);
@@ -192,6 +307,10 @@ function userInputListener(userClickableArea) {
 }
 
 function getPlayerImage(playerId) {
+
+    // be able to add a team logo inside player's pic
+    // using team's abbreviation. we can pull a team logo for every player
+    // https://stats.nba.com/media/img/teams/logos/{BOS}_logo.svg
 
     const image = d3.select("#player-image")
     image.attr('src', `http://stats.nba.com/media/players/230x185/${playerId}.png`)
