@@ -63,3 +63,14 @@ The results were a bit limited based on the limited interaction type provided by
 
 
 ### To Run
+
+Required to run in scikit-learn 0.21.2 or 0.21.3
+
+After cloning the project, the large files below should be download into models/step1
+
+Step 1 Files - https://www.dropbox.com/sh/zyqt6z0l3kpixrv/AADV2zMfCaiS832AjVMGTZFka?dl=0
+
+The Large 
+
+Step 4 Files - https://www.dropbox.com/sh/uobmx2ysvwqie2u/AAAFeMvouLDY6TpB7Er-zmOZa?dl=0
+
