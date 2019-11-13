@@ -32,7 +32,11 @@ The results were a bit limited based on the limited interaction type provided by
 
 - Python
 - Jupyter Notebook
-- 
+- SQllite
+- HTML 
+- JavaScript
+- CSS
+
 
 #### Modules Used
 
@@ -42,9 +46,20 @@ The results were a bit limited based on the limited interaction type provided by
 - sqlalchemy
 - sklearn
 - nba_api
+- MatplotLib
+- Seaborn
+- D3 / D3 read CSV
+- jquiry
+
+#### Machine Learning Used
+
+- LineraSVR
+- Decision Tree Regressor
+- Random Forest Regressor
+- Voting Regressor
+- Logistic Regression
+- RFE 
+- Voting Classifier
 
 
 ### To Run
-
-Step 1 Files - https://www.dropbox.com/sh/zyqt6z0l3kpixrv/AADV2zMfCaiS832AjVMGTZFka?dl=0
-Step 4 Files - https://www.dropbox.com/sh/uobmx2ysvwqie2u/AAAFeMvouLDY6TpB7Er-zmOZa?dl=0
