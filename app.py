@@ -1,16 +1,18 @@
+from nba_api.stats.endpoints import LeagueDashPlayerStats, LeagueDashTeamStats
+import json
+import numpy as np
+import pandas as pd
+import kdtree
+from flask import Flask, jsonify, render_template, request, make_response
+from sqlalchemy import create_engine
+from flask_sqlalchemy import SQLAlchemy
 import warnings
 from sklearn.externals import joblib
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import create_engine
-from flask import Flask, jsonify, render_template, request, make_response
+
+warnings.warn("ignore", category=DeprecationWarning)
 
 # Use k-dimensional tree to get hitorical shot information
 # related to a nearest shot location
-import kdtree
-import pandas as pd
-import numpy as np
-import json
-from nba_api.stats.endpoints import LeagueDashPlayerStats
 
 # NBA_API requires this headers to correctly get a dataset when XHR
 headers = {
@@ -27,15 +29,6 @@ headers = {
     'Accept-Encoding': 'gzip, deflate, br',
     'Accept-Language': 'en-US,en;q=0.9',
 }
-
-# force to avoid any warnings, especially the ones from sklearn which are not importants
-
-
-def warn(*args, **kwargs):
-    pass
-
-
-warnings.warn = warn
 
 
 # Create an app
@@ -120,27 +113,31 @@ def nearest_shot(loc_x, loc_y):
     return SHOT_CHART_DICT[nearest_shot_location[0].data]
 
 
-# For manual Standard-Scaling for Step1
+# For manual Standard-Scaling for Step1~4
 with open('static/db/step1_scaler_statistics.json', 'r') as stats_step1:
     stats_json_step1 = json.load(stats_step1)
 
-# For manual Standard-Scaling for Step3
+with open('static/db/step2_scaler_statistics.json', 'r') as stats_step2:
+    stats_json_step2 = json.load(stats_step2)
+
 with open('static/db/step3_scaler_statistics.json', 'r') as stats_step3:
     stats_json_step3 = json.load(stats_step3)
+
+with open('static/db/step4_scaler_statistics.json', 'r') as stats_step4:
+    stats_json_step4 = json.load(stats_step4)
+
+# load player-team json to reference team's id
+with open('static/db/players.json', 'r') as pt:
+    players_json = json.load(pt)
+
+# load player-team json to reference team's id
+with open('static/db/player-team.json', 'r') as pt:
+    player_team = json.load(pt)
 
 
 @app.route("/")
 def home():
     return render_template("index.html")
-
-
-@app.route("/players-2018-stats", methods=['GET'])
-def get_player_stats():
-
-    # todo: make a endpoint to grap player's stats to display on the browser
-    pass
-
-    return
 
 
 @app.route("/shotchart", methods=['GET'])
@@ -172,6 +169,12 @@ def post_user_inputs():
     print(req)
 
     # player_id = req['playerId'].strip()
+
+    player_name = req['playerName'].strip()
+    player_id = [player['PLAYER_ID']
+                 for player in players_json if player['PLAYER_NAME'] == player_name][0]
+    print(player_id)
+
     player_name_for_stat = req['playerName'].strip()
     if player_name_for_stat == "Lebron James":
         player_name_for_stat = "LeBron James"
@@ -180,15 +183,26 @@ def post_user_inputs():
     df_lps = LeagueDashPlayerStats(
         league_id_nullable='00', headers=headers).league_dash_player_stats.get_data_frame().set_index('PLAYER_NAME')
 
+    # Get team's stats for the current season (2019-20)
+    df_lts = LeagueDashTeamStats(
+        league_id_nullable='00', headers=headers).league_dash_team_stats.get_data_frame().set_index('TEAM_ID')
+    df_lts['PTS_AVG'] = df_lts['PTS'] / df_lts['GP']
+    df_lts = df_lts[['PTS_AVG']]
+
     #########################################################################
     #
     # STEP1 Prediction: predict shot-made% based on shot location information
     #
     #########################################################################
 
-    FG_PCT_2019 = df_lps.loc[player_name_for_stat]['FG_PCT']
-    FG3_PCT_2019 = df_lps.loc[player_name_for_stat]['FG3_PCT']
-    print(f"FG%_2019={FG_PCT_2019}, FG3%_2019={FG3_PCT_2019}")
+    try:
+        FG_PCT_2019 = df_lps.loc[player_name_for_stat]['FG_PCT']
+        FG3_PCT_2019 = df_lps.loc[player_name_for_stat]['FG3_PCT']
+        print(f"FG%_2019={FG_PCT_2019}, FG3%_2019={FG3_PCT_2019}")
+    except KeyError:
+        FG_PCT_2019 = 0
+        FG3_PCT_2019 = 0
+        print("No records found for him on the database.")
 
     # EXAMPLE of req:
     # {'playerName': ' Al Horford ',
@@ -260,29 +274,40 @@ def post_user_inputs():
 
     # total number of games, player's points, and play time for the current season
     # (time in minutes)
-    number_of_games = df_lps.loc[player_name_for_stat]['GP']
-    total_pts = df_lps.loc[player_name_for_stat]['PTS']
-    total_playing_time = df_lps.loc[player_name_for_stat]['MIN']
+    try:
+        number_of_games = df_lps.loc[player_name_for_stat]['GP']
+        total_pts = df_lps.loc[player_name_for_stat]['PTS']
+        total_playing_time = df_lps.loc[player_name_for_stat]['MIN']
 
-    PTS_player_AVG_2019 = total_pts / number_of_games
+        PTS_player_AVG_2019 = total_pts / number_of_games
 
-    # feature addtion: playing time% per a game
-    # divided by the maximum minutes per a game in the dataset
-    PLAYING_PCT = (total_playing_time /
-                   number_of_games) / 60
+        # feature addtion: playing time% per a game
+        # divided by the maximum minutes per a game in the dataset
+        PLAYING_PCT = (total_playing_time /
+                       number_of_games) / 60
 
-    # todo: apply the scaler's distribution for each feature
+    except KeyError:
+        PTS_player_AVG_2019 = 0
+
+        # If KeyError, just apply the average playing time% for player
+        PLAYING_PCT = 0.57
+
     model_step2 = joblib.load(f'static/models/step2/{player_name}')
 
-    scaled_FG_PCT = FG_PCT_predicted
-    scaled_FG3_PCT = FG3_PCT_predicted
-    scaled_PLAYING_PCT = PLAYING_PCT
+    # * Manual Standard Scalings for incoming features
+    scaled_FG_PCT = (FG_PCT_predicted - stats_json_step2[player_name]
+                     ['mean_FG_PCT']) / stats_json_step2[player_name]['std_FG_PCT']
+    scaled_FG3_PCT = (FG3_PCT_predicted - stats_json_step2[player_name]
+                      ['mean_FG3_PCT']) / stats_json_step2[player_name]['std_FG3_PCT']
+    scaled_PLAYING_PCT = (
+        PLAYING_PCT - stats_json_step2[player_name]['mean_PLAYING%']) / stats_json_step2[player_name]['std_PLAYING%']
 
     X_test_step2 = {'FG_PCT': scaled_FG_PCT,
                     'FG3_PCT': scaled_FG3_PCT,
                     'PLAYING%': scaled_PLAYING_PCT}
 
     X_test_step2 = pd.DataFrame(X_test_step2, index=[0])
+    print(X_test_step2)
     PTS_player_predicted = model_step2.predict(X_test_step2)[0]
 
     print("Prediction results from STEP2:")
@@ -296,11 +321,20 @@ def post_user_inputs():
 
     model_step3 = joblib.load(f'static/models/step3/{player_name}')
 
-    # Get a player's average PLUS_MINUS points for the current season (2019-20)
-    player_PM = df_lps.loc[player_name_for_stat]['PLUS_MINUS'] / \
-        df_lps.loc[player_name_for_stat]['GP']
+    try:
+        team_id = [team['TEAM_ID']
+                   for team in player_team if int(team['PLAYER_ID']) == int(player_id)][0]
+        print(team_id)
+        # Get a player's average PLUS_MINUS points for the current season (2019-20)
+        player_PM = df_lps.loc[player_name_for_stat]['PLUS_MINUS'] / \
+            df_lps.loc[player_name_for_stat]['GP']
 
-    # todo: apply the scaler's distribution for each feature
+        PTS_team_AVG_2019 = df_lts.loc[team_id][0]
+    except (KeyError, IndexError):
+        player_PM = 0
+        PTS_team_AVG_2019 = 0
+
+    # Manual Standard Scalings for incoming features
     scaled_PTS_player = (PTS_player_predicted - stats_json_step3[player_name]
                          ['mean_PLAYER_PTS']) / stats_json_step3[player_name]['std_PLAYER_PTS']
     scaled_player_PM = (
@@ -321,17 +355,40 @@ def post_user_inputs():
     #
     #########################################################################
 
-    # todo: apply the scaler's distribution for each feature
+    model_step4 = joblib.load(f'static/models/step4/{player_name}')
 
-    # model_step3 = joblib.load(f'static/models/step4/{player_name}')
+    # Manual Standard Scalings for incoming features
+    scaled_PTS_team = (PTS_team_predicted - stats_json_step4[player_name]
+                       ['mean_TEAM_PTS']) / stats_json_step4[player_name]['std_TEAM_PTS']
+    scaled_PTS_player = (PTS_player_AVG_2019 - stats_json_step4[player_name]
+                         ['mean_PLAYER_PTS']) / stats_json_step4[player_name]['std_PLAYER_PTS']
+    scaled_player_PM = (
+        player_PM - stats_json_step4[player_name]['mean_PLUS_MINUS']) / stats_json_step4[player_name]['std_PLUS_MINUS']
 
+    X_test_step4 = {'TEAM_PTS': scaled_PTS_team,
+                    'PLAYER_PTS': scaled_PTS_player,
+                    'PLUS_MINUS': scaled_player_PM
+                    }
+    X_test_step4 = pd.DataFrame(X_test_step4, index=[0])
+    WIN_LOSE_predicted = model_step4.predict(X_test_step4)
+
+    # Change the predicted results into a text
+    if WIN_LOSE_predicted == 1:
+        WIN_LOSE_predicted = "WIN"
+    else:
+        WIN_LOSE_predicted = "LOSE"
+
+    # All the predicted results and references come together and will be thrown to front-end
     res = [{
         'FG_PCT': FG_PCT_predicted,
         'FG3_PCT': FG3_PCT_predicted,
         'FG_PCT_2019': FG_PCT_2019,
         'FG3_PCT_2019': FG3_PCT_2019,
         'PTS_player': PTS_player_predicted,
-        'PTS_player_AVG_2019': PTS_player_AVG_2019
+        'PTS_player_AVG_2019': PTS_player_AVG_2019,
+        'PTS_team': PTS_team_predicted,
+        'PTS_team_AVG_2019': PTS_team_AVG_2019,
+        'WIN_LOSE': WIN_LOSE_predicted
     }]
 
     return jsonify(res)

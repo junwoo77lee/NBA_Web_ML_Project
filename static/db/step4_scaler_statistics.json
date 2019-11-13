@@ -1,0 +1,162 @@
+{
+    "Stephen Curry": {
+        "mean_TEAM_PTS": 106.7692307692,
+        "mean_PLAYER_PTS": 18.5976331361,
+        "mean_PLUS_MINUS": 0.8816568047,
+        "std_TEAM_PTS": 13.4257215821,
+        "std_PLAYER_PTS": 9.3994171087,
+        "std_PLUS_MINUS": 13.902644733
+    },
+    "Jimmy Butler": {
+        "mean_TEAM_PTS": 100.0734463277,
+        "mean_PLAYER_PTS": 15.7457627119,
+        "mean_PLUS_MINUS": 3.0536723164,
+        "std_TEAM_PTS": 13.1433683442,
+        "std_PLAYER_PTS": 10.1712139832,
+        "std_PLUS_MINUS": 11.4822168485
+    },
+    "Chris Paul": {
+        "mean_TEAM_PTS": 101.4919454771,
+        "mean_PLAYER_PTS": 18.4820322181,
+        "mean_PLUS_MINUS": 5.0570012392,
+        "std_TEAM_PTS": 13.0996229392,
+        "std_PLAYER_PTS": 7.424348771,
+        "std_PLUS_MINUS": 13.1548978483
+    },
+    "Karl-Anthony Towns": {
+        "mean_TEAM_PTS": 107.8224299065,
+        "mean_PLAYER_PTS": 22.308411215,
+        "mean_PLUS_MINUS": 0.9595015576,
+        "std_TEAM_PTS": 11.8090111918,
+        "std_PLAYER_PTS": 8.0638985783,
+        "std_PLUS_MINUS": 12.7672032862
+    },
+    "Nikola Jokic": {
+        "mean_TEAM_PTS": 108.6496598639,
+        "mean_PLAYER_PTS": 16.2380952381,
+        "mean_PLUS_MINUS": 3.619047619,
+        "std_TEAM_PTS": 13.1433310106,
+        "std_PLAYER_PTS": 8.5839228511,
+        "std_PLUS_MINUS": 12.0696688262
+    },
+    "Paul George": {
+        "mean_TEAM_PTS": 102.266802444,
+        "mean_PLAYER_PTS": 19.3441955193,
+        "mean_PLUS_MINUS": 4.3910386965,
+        "std_TEAM_PTS": 13.088400292,
+        "std_PLAYER_PTS": 9.4696972084,
+        "std_PLUS_MINUS": 12.3852216552
+    },
+    "Al Horford": {
+        "mean_TEAM_PTS": 100.8110599078,
+        "mean_PLAYER_PTS": 14.2749615975,
+        "mean_PLUS_MINUS": 2.3963133641,
+        "std_TEAM_PTS": 11.869661415,
+        "std_PLAYER_PTS": 5.8412040216,
+        "std_PLUS_MINUS": 12.0781908447
+    },
+    "Lebron James": {
+        "mean_TEAM_PTS": 100.3764705882,
+        "mean_PLAYER_PTS": 27.5152941176,
+        "mean_PLUS_MINUS": 5.0447058824,
+        "std_TEAM_PTS": 12.0517889826,
+        "std_PLAYER_PTS": 8.1966626246,
+        "std_PLUS_MINUS": 12.4438101593
+    },
+    "Damian Lillard": {
+        "mean_TEAM_PTS": 105.7530120482,
+        "mean_PLAYER_PTS": 23.6746987952,
+        "mean_PLUS_MINUS": 3.1004016064,
+        "std_TEAM_PTS": 12.4137767048,
+        "std_PLAYER_PTS": 8.4949151799,
+        "std_PLUS_MINUS": 13.0374001494
+    },
+    "James Harden": {
+        "mean_TEAM_PTS": 108.8992248062,
+        "mean_PLAYER_PTS": 28.7325581395,
+        "mean_PLUS_MINUS": 5.3837209302,
+        "std_TEAM_PTS": 12.7452409437,
+        "std_PLAYER_PTS": 9.9353056174,
+        "std_PLUS_MINUS": 13.3213809049
+    },
+    "Kyrie Irving": {
+        "mean_TEAM_PTS": 103.8336755647,
+        "mean_PLAYER_PTS": 22.3449691992,
+        "mean_PLUS_MINUS": 1.681724846,
+        "std_TEAM_PTS": 12.9944216997,
+        "std_PLAYER_PTS": 8.6578831528,
+        "std_PLUS_MINUS": 12.4789260505
+    },
+    "Kevin Durant": {
+        "mean_TEAM_PTS": 99.5818181818,
+        "mean_PLAYER_PTS": 23.9363636364,
+        "mean_PLUS_MINUS": -4.5636363636,
+        "std_TEAM_PTS": 13.3844917915,
+        "std_PLAYER_PTS": 9.3192877555,
+        "std_PLUS_MINUS": 13.6560147535
+    },
+    "Draymond Green": {
+        "mean_TEAM_PTS": 110.5522727273,
+        "mean_PLAYER_PTS": 8.825,
+        "mean_PLUS_MINUS": 6.1954545455,
+        "std_TEAM_PTS": 13.8054162003,
+        "std_PLAYER_PTS": 6.0869787083,
+        "std_PLUS_MINUS": 13.0444474882
+    },
+    "Kawhi Leonard": {
+        "mean_TEAM_PTS": 104.9841688654,
+        "mean_PLAYER_PTS": 17.1081794195,
+        "mean_PLUS_MINUS": 6.1635883905,
+        "std_TEAM_PTS": 11.4646806389,
+        "std_PLAYER_PTS": 8.6236055761,
+        "std_PLUS_MINUS": 11.738537978
+    },
+    "Rudy Gobert": {
+        "mean_TEAM_PTS": 101.0374639769,
+        "mean_PLAYER_PTS": 11.1008645533,
+        "mean_PLUS_MINUS": 3.5850144092,
+        "std_TEAM_PTS": 13.3015833045,
+        "std_PLAYER_PTS": 6.45470428,
+        "std_PLUS_MINUS": 12.5163756406
+    },
+    "Anthony Davis": {
+        "mean_TEAM_PTS": 105.202020202,
+        "mean_PLAYER_PTS": 23.4915824916,
+        "mean_PLUS_MINUS": 2.5454545455,
+        "std_TEAM_PTS": 13.4236931001,
+        "std_PLAYER_PTS": 9.9032872232,
+        "std_PLUS_MINUS": 12.1379509218
+    },
+    "Joel Embiid": {
+        "mean_TEAM_PTS": 109.1222222222,
+        "mean_PLAYER_PTS": 23.8111111111,
+        "mean_PLUS_MINUS": 7.4222222222,
+        "std_TEAM_PTS": 11.9998387422,
+        "std_PLAYER_PTS": 7.9914201807,
+        "std_PLUS_MINUS": 11.6126410953
+    },
+    "Russell Westbrook": {
+        "mean_TEAM_PTS": 104.6117886179,
+        "mean_PLAYER_PTS": 21.5020325203,
+        "mean_PLUS_MINUS": 3.8292682927,
+        "std_TEAM_PTS": 12.2765860658,
+        "std_PLAYER_PTS": 8.681862777,
+        "std_PLUS_MINUS": 12.0189648626
+    },
+    "Victor Oladipo": {
+        "mean_TEAM_PTS": 107.8224299065,
+        "mean_PLAYER_PTS": 22.308411215,
+        "mean_PLUS_MINUS": 0.9595015576,
+        "std_TEAM_PTS": 11.8090111918,
+        "std_PLAYER_PTS": 8.0638985783,
+        "std_PLUS_MINUS": 12.7672032862
+    },
+    "Giannis Antetokounmpo": {
+        "mean_TEAM_PTS": 104.7846153846,
+        "mean_PLAYER_PTS": 18.8953846154,
+        "mean_PLUS_MINUS": 2.5046153846,
+        "std_TEAM_PTS": 13.8569547406,
+        "std_PLAYER_PTS": 9.9914227223,
+        "std_PLUS_MINUS": 11.9465428489
+    }
+}

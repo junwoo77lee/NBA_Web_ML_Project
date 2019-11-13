@@ -1,0 +1,103 @@
+[{
+        "PLAYER_ID": 1626157,
+        "SEASON_ID": "2019-20",
+        "TEAM_ID": 1610612750,
+        "TEAM_ABBREVIATION": "MIN"
+    },
+    {
+        "PLAYER_ID": 203999,
+        "SEASON_ID": "2019-20",
+        "TEAM_ID": 1610612743,
+        "TEAM_ABBREVIATION": "DEN"
+    },
+    {
+        "PLAYER_ID": 202681,
+        "SEASON_ID": "2019-20",
+        "TEAM_ID": 1610612751,
+        "TEAM_ABBREVIATION": "BKN"
+    },
+    {
+        "PLAYER_ID": 201143,
+        "SEASON_ID": "2019-20",
+        "TEAM_ID": 1610612755,
+        "TEAM_ABBREVIATION": "PHI"
+    },
+    {
+        "PLAYER_ID": 203081,
+        "SEASON_ID": "2019-20",
+        "TEAM_ID": 1610612757,
+        "TEAM_ABBREVIATION": "POR"
+    },
+    {
+        "PLAYER_ID": 203497,
+        "SEASON_ID": "2019-20",
+        "TEAM_ID": 1610612762,
+        "TEAM_ABBREVIATION": "UTA"
+    },
+    {
+        "PLAYER_ID": 203110,
+        "SEASON_ID": "2019-20",
+        "TEAM_ID": 1610612744,
+        "TEAM_ABBREVIATION": "GSW"
+    },
+    {
+        "PLAYER_ID": 202695,
+        "SEASON_ID": "2019-20",
+        "TEAM_ID": 1610612746,
+        "TEAM_ABBREVIATION": "LAC"
+    },
+    {
+        "PLAYER_ID": 202710,
+        "SEASON_ID": "2019-20",
+        "TEAM_ID": 1610612748,
+        "TEAM_ABBREVIATION": "MIA"
+    },
+    {
+        "PLAYER_ID": 203954,
+        "SEASON_ID": "2019-20",
+        "TEAM_ID": 1610612755,
+        "TEAM_ABBREVIATION": "PHI"
+    },
+    {
+        "PLAYER_ID": 101108,
+        "SEASON_ID": "2019-20",
+        "TEAM_ID": 1610612760,
+        "TEAM_ABBREVIATION": "OKC"
+    },
+    {
+        "PLAYER_ID": 201566,
+        "SEASON_ID": "2019-20",
+        "TEAM_ID": 1610612745,
+        "TEAM_ABBREVIATION": "HOU"
+    },
+    {
+        "PLAYER_ID": 203507,
+        "SEASON_ID": "2019-20",
+        "TEAM_ID": 1610612749,
+        "TEAM_ABBREVIATION": "MIL"
+    },
+    {
+        "PLAYER_ID": 203076,
+        "SEASON_ID": "2019-20",
+        "TEAM_ID": 1610612747,
+        "TEAM_ABBREVIATION": "LAL"
+    },
+    {
+        "PLAYER_ID": 201935,
+        "SEASON_ID": "2019-20",
+        "TEAM_ID": 1610612745,
+        "TEAM_ABBREVIATION": "HOU"
+    },
+    {
+        "PLAYER_ID": 201939,
+        "SEASON_ID": "2019-20",
+        "TEAM_ID": 1610612744,
+        "TEAM_ABBREVIATION": "GSW"
+    },
+    {
+        "PLAYER_ID": 2544,
+        "SEASON_ID": "2019-20",
+        "TEAM_ID": 1610612747,
+        "TEAM_ABBREVIATION": "LAL"
+    }
+]
