@@ -2,7 +2,7 @@
 
 ### Objective
 
-To build a user interactive website that allows for the selection of the 2018 Top NBA players according to https://www.si.com/nba/2017/09/14/nba-top-100-players-2018-lebron-james-stephen-curry-kevin-durant.  Once players are selected the objective was to run user selected or randomly generated shot locations to predict various NBA results.
+To build a user interactive website that allows for the selection of the 2018 Top NBA players according to https://www.si.com/nba/2017/09/14/nba-top-100-players-2018-lebron-james-stephen-curry-kevin-durant.  Once players are selected the objective was to run user selected or randomly generated shot locations to predict various NBA player/team results.
 
 ### Purpose/Goal
 
