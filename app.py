@@ -307,6 +307,7 @@ def post_user_inputs():
                     'PLAYING%': scaled_PLAYING_PCT}
 
     X_test_step2 = pd.DataFrame(X_test_step2, index=[0])
+    print(X_test_step2)
     PTS_player_predicted = model_step2.predict(X_test_step2)[0]
 
     print("Prediction results from STEP2:")
@@ -320,17 +321,16 @@ def post_user_inputs():
 
     model_step3 = joblib.load(f'static/models/step3/{player_name}')
 
-    team_id = [team['TEAM_ID']
-               for team in player_team if int(team['PLAYER_ID']) == int(player_id)][0]
-    print(team_id)
-
     try:
+        team_id = [team['TEAM_ID']
+                   for team in player_team if int(team['PLAYER_ID']) == int(player_id)][0]
+        print(team_id)
         # Get a player's average PLUS_MINUS points for the current season (2019-20)
         player_PM = df_lps.loc[player_name_for_stat]['PLUS_MINUS'] / \
             df_lps.loc[player_name_for_stat]['GP']
 
         PTS_team_AVG_2019 = df_lts.loc[team_id][0]
-    except KeyError:
+    except (KeyError, IndexError):
         player_PM = 0
         PTS_team_AVG_2019 = 0
 
