@@ -42,17 +42,17 @@
         <div class="col-4">
             <div class="row">
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="useCourtSelection" name="useCourtSelection" class="custom-control-input" checked="checked">
-                    <label class="custom-control-label" for="useCourtSelection">
+                    <input type="radio" id="user-shots" name="shots-on-court" class="custom-control-input" checked>
+                    <label class="custom-control-label" for="user-shots">
                         <h6>Click Court to Shoot</h6>
                     </label>
                 </div>
             </div>
             <div class="row">
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="useRandomButton" name="useCourtSelection" class="custom-control-input">
-                    <label class="custom-control-label" for="useRandomButton">
-                        <h6>Take <input id="random-shots" type="text" maxlength="4" size="4" value=100> Random Shots
+                    <input type="radio" id="random-shots" name="shots-on-court" class="custom-control-input">
+                    <label class="custom-control-label" for="random-shots">
+                        <h6>Take <input id="shot-counts" type="text" maxlength="4" size="4" value=100> Random Shots
                         </h6>
                     </label>
                 </div>
@@ -60,22 +60,24 @@
         </div>
         <!-- created button to select and calculate results -->
         <div class="col-3">
-            <button type="button" id="finishedShotButton" class="btn btn-primary btn-lg">Calculate Results</button>
+            <button type="button" id="finishedShotButton" class="btn btn-primary btn-lg">Predict</button>
         </div>
         <!-- header for the column below that displayes results -->
         <div class="col-1">
-            <h4>Game Results:</h4>
+            <!-- <h4>Game Results:</h4> -->
         </div>
     </div>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-2">
+            <div class="col-3">
                 <div class="row">
                     <!-- Player image and data -->
                     <img id="player-image" src="http://stats.nba.com/media/players/230x185/201143.png" alt="201143">
                 </div>
                 <div class="row">
-                    <!-- player's stats -->
+                    <!-- player's stats info area -->
+                    <ul class="list-group list-group-flush" id="playerStatTable">
+                    </ul>
                 </div>
             </div>
             <div class="col-5">
@@ -85,35 +87,27 @@
             <div class="col-3">
                 <div id="predictions" class="container"></div>
             </div>
-            <div class="col-2">
+            <div class="col-1">
                 <!-- result/win/loss column -->
-                <div class="alert alert-primary" role="alert">
-                </div>
-                <div " class="winLossColumn alert alert-primary " id="winLossDisplay " role="alert ">
+                <!-- <div class="winLossColumn alert alert-primary" id="winLossDisplay" role="alert">
+                </div> -->
             </div>
         </div>
     </div>
-    </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js "
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo "
-        crossorigin="anonymous "></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js "
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 "
-        crossorigin="anonymous "></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js "
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM "
-        crossorigin="anonymous "></script>
+    <script src=" https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity=" sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin=" anonymous "></script>
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity=" sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin=" anonymous "></script>
+    <script src=" https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity=" sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin=" anonymous "></script>
 
     <!-- Select Picker -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js "></script>
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js "></script>
 
     <!-- D3.js -->
-    <script type="text/javascript " src="https://d3js.org/d3.v5.js "></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.js "></script>
+    <script type=" text/javascript " src=" https://d3js.org/d3.v5.js "></script>
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.js "></script>
 
     <!-- main.js -->
-    <script src="{{ url_for( 'static', filename='js/main.js' ) }} "></script>
+    <script src=" {{ url_for( 'static', filename='js/main.js' ) }} "></script>
 </body>
 
 </html>
