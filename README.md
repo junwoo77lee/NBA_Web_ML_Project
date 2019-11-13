@@ -70,7 +70,7 @@ After cloning the project, the large files below should be download into models/
 
 Step 1 Files - https://www.dropbox.com/sh/zyqt6z0l3kpixrv/AADV2zMfCaiS832AjVMGTZFka?dl=0
 
-The Large 
+Similiar to above, the files below should be downladed into models/step4
 
 Step 4 Files - https://www.dropbox.com/sh/uobmx2ysvwqie2u/AAAFeMvouLDY6TpB7Er-zmOZa?dl=0
 
