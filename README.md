@@ -32,10 +32,9 @@ The results were a bit limited based on the limited interaction type provided by
 
 - Python
 - Jupyter Notebook
-- SQllite
-- HTML 
+- SQLite
+- HTML5/ CSS3/ Bootstrap4
 - JavaScript
-- CSS
 
 
 #### Modules Used
@@ -43,23 +42,23 @@ The results were a bit limited based on the limited interaction type provided by
 - Pandas
 - Numpy
 - Flask
-- sqlalchemy
-- sklearn
-- nba_api
+- SQLAlchemy
+- Scikit Learn
+- NBA_api
 - MatplotLib
 - Seaborn
-- D3 / D3 read CSV
-- jquiry
+- d3.js
+- jquery
 
-#### Machine Learning Used
 
-- LineraSVR
+#### Machine Learning techniques Used
+
+- SVM
 - Decision Tree Regressor
 - Random Forest Regressor
-- Voting Regressor
+- Voting Regressor/ Classifier
 - Logistic Regression
-- RFE 
-- Voting Classifier
+- MLP (Neural Networks)
 
 
 ### To Run
@@ -73,4 +72,3 @@ Step 1 Files - https://www.dropbox.com/sh/zyqt6z0l3kpixrv/AADV2zMfCaiS832AjVMGTZ
 Similiar to above, the files below should be downladed into models/step4
 
 Step 4 Files - https://www.dropbox.com/sh/uobmx2ysvwqie2u/AAAFeMvouLDY6TpB7Er-zmOZa?dl=0
-
